@@ -53,6 +53,6 @@ public class Cliente extends Usuario{
         return numeroAleatorio;
     }
     public String toString(){
-      return "Cliente:"+nombre+" Número de cuenta: "+numero_cuenta+" Tipo de cliente: "+tipo_cliente;
+      return "Número de cuenta: "+numero_cuenta+" Tipo de cliente: "+tipo_cliente;
     }
 }

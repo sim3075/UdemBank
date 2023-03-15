@@ -10,7 +10,7 @@ public class ATM{
   }
 
 //Property;
-  public String getId() {
+  public int getId() {
         return id;
     }
     

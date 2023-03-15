@@ -2,10 +2,11 @@ import java.util.*;
 import java.io.*;
 
 public class UdemBank{
+  public long balance_general = 1000000000;
   Scanner input = new Scanner(System.in);
-  Administrador admin = new Administrador();
+  Administrador admin = new Administrador(3456712, "Julio Cortes", "password");
   Verificacion check = new Verificacion();
-  Administrador[] admins = {new Administrador(3456712, "Julio Cortes", "password")};
+  Administrador[] admins = {admin};
 
   public void welcome(){
     System.out.println("Que tipo de usuario eres? ");
@@ -19,7 +20,16 @@ public class UdemBank{
     if(tipo_usuario == 1){
       System.out.println("Bienvenido por favor digita tu id: ");
       int id_cliente = input.nextInt();
-      check.verificar_id(id_cliente);
+      if(check.verificacion_id(id_cliente)){
+        
+      }
+      
+    }else if(tipo_usuario == 2){
+      System.out.println("Bienvenido por favor digita tu id: ");
+      int id_admin = input.nextInt();
+      if(check.verificacion_id(id_admin)){
+        
+      }
       
     }
     
