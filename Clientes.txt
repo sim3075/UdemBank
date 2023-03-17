@@ -1,1 +1,2 @@
-123 simon hola platino
+123 simon hola 0
+235 pedro holamundo 1

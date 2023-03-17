@@ -21,16 +21,16 @@ public class ATM{
       this.balance = newBalance;
   }
   public String toString(){
-      return "id: "+id+"balance: "+balance;
+      return "id: "+id+" balance: "+balance;
     }
   
 //Comportamientos;
-  public void whithdraw_atm(int valor){
+  public void whithdraw_atm(double valor){
     this.balance -= valor;
 
   }
 
-  public void update_Balance_atm(int valor){
+  public void update_Balance_atm(double valor){
     this.balance += valor;
     
     

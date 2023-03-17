@@ -4,13 +4,13 @@ import java.io.*;
 public class Administrador extends Usuario{
   Scanner input = new Scanner(System.in);
   public List<Cliente> clientes = new ArrayList<Cliente>();
-  ATM[] atm_list = {new ATM(11, 100000000)};
+  ATM[] atm_list = {new ATM(11, 100000000), new ATM(12, 200000000), new ATM(13, 300000000), new ATM(14, 400000000)};
   //Constructor
   public Administrador(int id, String nombre, String password){
     super(id, nombre,  password);
   }
   //Metodos;
-  public void agregarCliente(int id, String nombre, String password, String tipo_cliente) {
+  public void agregarCliente(int id, String nombre, String password, int tipo_cliente) {
     Cliente cliente = new Cliente(id, nombre, password, tipo_cliente);
     clientes.add(cliente);
     escribir_txt("Clientes.txt");
@@ -46,7 +46,7 @@ public class Administrador extends Usuario{
           System.out.println("Modificar nombre: ");
           String newNombre = input.nextLine();
           System.out.println("Modificar tipo de cliente:");
-          String newTipo = input.nextLine();
+          int newTipo = input.nextInt();
           i.setNombre(newNombre);
           i.setTipoCliente(newTipo);
           escribir_txt("Clientes.txt");
@@ -90,7 +90,7 @@ public class Administrador extends Usuario{
           int id = Integer.parseInt(campos[0]);
           String nombre = campos[1];
           String password = campos[2];
-          String tipo = campos[3];
+          int tipo = Integer.parseInt(campos[3]);
           Cliente cliente = new Cliente(id, nombre, password, tipo);
           clientes.add(cliente);
         }

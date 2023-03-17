@@ -24,13 +24,14 @@ public class UdemBank{
       System.out.println("contraseña: ");
       String password = input.nextLine();
       if(check.verificacion_id(id_cliente) && check.verificacion_password(password)){
+        Cliente cliente = check.obtenerCliente(id_cliente);
         System.out.println("Elija una opción");
         System.out.println("(1) Retirar desde un ATM");
         System.out.println("(2) Depositar desde un ATM");
         System.out.println("(3) Transferir");
         System.out.println("Ingrese su respuesta: ");
         int respuesta = input.nextInt();
-        //transacciones_cliente(respuesta, id_cliente);
+        actions.transacciones_clientes(respuesta, cliente);
         
       }else{
         System.out.println("Usuario no registrado.");

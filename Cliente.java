@@ -4,13 +4,13 @@ import java.util.*;
 public class Cliente extends Usuario{
   private String numero_cuenta;
   private int saldo;
-  private String tipo_cliente;
+  private int tipo_cliente;
 
   //Constructor;
-  public Cliente(int id, String nombre, String password, String tipo_cliente){
+  public Cliente(int id, String nombre, String password, int tipo_cliente){
     super(id, nombre, password);
     this.numero_cuenta = generarNumeroCuenta();
-    this.saldo = 0;
+    this.saldo = 20000;
     this.tipo_cliente = tipo_cliente;
   }
   //Property
@@ -22,26 +22,28 @@ public class Cliente extends Usuario{
         return saldo;
     }
   
-  public String getTipoCliente(){
+  public int getTipoCliente(){
     return tipo_cliente;
   }
-  public void setTipoCliente(String newTipo){
+  public void setTipoCliente(int newTipo){
     this.tipo_cliente = newTipo;
   }
   
   //Metodos;
-    public void depositar(int monto) {
+    public int depositar(double monto) {
         this.saldo += monto;
+        return this.saldo;
     }
 
-    public int retirar(int monto) {
+    public int retirar(double monto) {
         this.saldo -= monto;
         return this.saldo;
     }
 
-    public void transferir(int monto, Cliente destinatario) {
+    public int transferir(double monto, Cliente destinatario) {
         this.saldo -= monto;
         destinatario.depositar(monto);
+        return this.saldo;
     }
 
     private String generarNumeroCuenta() {

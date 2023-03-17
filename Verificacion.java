@@ -47,4 +47,22 @@ public class Verificacion{
       }
       return false;
   }
+
+  public Cliente obtenerCliente(int id) {
+    for (Cliente cliente : admin.clientes) {
+      if (cliente.getId() == id) {
+        return cliente;
+        }
+    }
+    return null;
+  }
+
+    public ATM obtenerATM(int id) {
+    for (ATM atm : admin.atm_list) {
+      if (atm.getId() == id) {
+        return atm;
+        }
+    }
+    return null;
+  }
 }
