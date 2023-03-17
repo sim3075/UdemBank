@@ -1,8 +1,8 @@
 public class Usuario{
   //Atributos;
-  private int id;
-  private String nombre;
-  private String password;
+  int id;
+  String nombre;
+  String password;
 
   //Constructor;
   public Usuario(int id, String nombre, String password){

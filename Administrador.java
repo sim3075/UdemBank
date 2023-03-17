@@ -4,7 +4,7 @@ import java.io.*;
 public class Administrador extends Usuario{
   Scanner input = new Scanner(System.in);
   public List<Cliente> clientes = new ArrayList<Cliente>();
-  public List<ATM> atms = new ArrayList<ATM>();
+  ATM[] atm_list = {new ATM(11, 100000000)};
   //Constructor
   public Administrador(int id, String nombre, String password){
     super(id, nombre,  password);
@@ -13,7 +13,7 @@ public class Administrador extends Usuario{
   public void agregarCliente(int id, String nombre, String password, String tipo_cliente) {
     Cliente cliente = new Cliente(id, nombre, password, tipo_cliente);
     clientes.add(cliente);
-    escribir_txt();
+    escribir_txt("Clientes.txt");
     }
 
     public void eliminarCliente(int id) {
@@ -22,8 +22,9 @@ public class Administrador extends Usuario{
       for (Cliente i : clientes) {
         if (i.getId() == id) {
           clientes.remove(i);
+          sobre_escribir_archivo("Clientes.txt");
+          escribir_txt("Clientes.txt");
           System.out.println("Cliente eliminado");
-          escribir_txt();
           check = true;
           break;
         }
@@ -41,13 +42,14 @@ public class Administrador extends Usuario{
       Boolean check = false;
       for (Cliente i : clientes) {
         if (i.getId() == id) {
+          sobre_escribir_archivo("Clientes.txt");
           System.out.println("Modificar nombre: ");
           String newNombre = input.nextLine();
           System.out.println("Modificar tipo de cliente:");
           String newTipo = input.nextLine();
           i.setNombre(newNombre);
           i.setTipoCliente(newTipo);
-          escribir_txt();
+          escribir_txt("Clientes.txt");
           check = true;
           break;
         }
@@ -60,14 +62,14 @@ public class Administrador extends Usuario{
     } 
     }
 
-    public void agregarATM(int id, int balance_especifico) {
-        ATM atm = new ATM(id, balance_especifico);
-        atms.add(atm);
-    }
+    //public void agregarATM(int id, int balance_especifico) {
+        //ATM atm = new ATM(id, balance_especifico);
+        //atms.add(atm);
+    //}
   
-    public void escribir_txt(){
+    public void escribir_txt(String ruta){
       try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Clientes.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(ruta));
             for ( Cliente i : clientes) {
                 writer.write(i.toString());
                 writer.newLine();
@@ -78,5 +80,32 @@ public class Administrador extends Usuario{
             e.printStackTrace();
         }
     }
-  
+    public void leer_archivo(String ruta){
+      try{
+      Scanner lectorArchivo = new Scanner(new File(ruta));
+      while (lectorArchivo.hasNextLine()) {
+        String linea = lectorArchivo.nextLine();
+        String[] campos = linea.split(" ");
+        if (campos.length == 4) {
+          int id = Integer.parseInt(campos[0]);
+          String nombre = campos[1];
+          String password = campos[2];
+          String tipo = campos[3];
+          Cliente cliente = new Cliente(id, nombre, password, tipo);
+          clientes.add(cliente);
+        }
+      }
+      }catch(FileNotFoundException e) {
+        System.out.println("Except");
+      }
+    }
+    public void sobre_escribir_archivo(String ruta){
+        try {
+            FileWriter writer = new FileWriter(ruta, false);
+            writer.write("");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error al borrar el archivo: ");
+        }
+    }
 }

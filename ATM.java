@@ -1,7 +1,7 @@
 public class ATM{
 //Atributos;
-  private int balance;
-  private int id;
+  public int balance;
+  public int id;
   
 //Método constructor;
   public ATM(int id, int balance){
@@ -20,6 +20,9 @@ public class ATM{
   public void setBalance(int newBalance){
       this.balance = newBalance;
   }
+  public String toString(){
+      return "id: "+id+"balance: "+balance;
+    }
   
 //Comportamientos;
   public void whithdraw_atm(int valor){

@@ -34,8 +34,9 @@ public class Cliente extends Usuario{
         this.saldo += monto;
     }
 
-    public void retirar(int monto) {
+    public int retirar(int monto) {
         this.saldo -= monto;
+        return this.saldo;
     }
 
     public void transferir(int monto, Cliente destinatario) {
@@ -53,6 +54,6 @@ public class Cliente extends Usuario{
         return numeroAleatorio;
     }
     public String toString(){
-      return "Número de cuenta: "+numero_cuenta+" Tipo de cliente: "+tipo_cliente;
+      return id+" "+nombre+" "+password+" "+tipo_cliente;
     }
 }
