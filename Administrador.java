@@ -61,12 +61,7 @@ public class Administrador extends Usuario{
       System.out.println("Intente con otro ID");
     } 
     }
-
-    //public void agregarATM(int id, int balance_especifico) {
-        //ATM atm = new ATM(id, balance_especifico);
-        //atms.add(atm);
-    //}
-  
+  //Metodos de manejo de archivos;
     public void escribir_txt(String ruta){
       try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(ruta));

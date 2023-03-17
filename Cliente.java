@@ -10,7 +10,7 @@ public class Cliente extends Usuario{
   public Cliente(int id, String nombre, String password, int tipo_cliente){
     super(id, nombre, password);
     this.numero_cuenta = generarNumeroCuenta();
-    this.saldo = 20000;
+    this.saldo = 0;
     this.tipo_cliente = tipo_cliente;
   }
   //Property

@@ -2,12 +2,13 @@ import java.util.*;
 import java.io.*;
 
 public class UdemBank{
-  public long balance_general = 1000000000;
+  public long balance_general = 1000000000; //Dinero total del banco;
   Scanner input = new Scanner(System.in);
   Administrador admin = new Administrador(3456712, "Julio Cortes", "password");
   Verificacion check = new Verificacion();
   Transacciones actions = new Transacciones();
 
+  //Metodo de bienvenida para saber si es cliente o admin;
   public void welcome(){
     System.out.println("Que tipo de usuario eres? ");
     System.out.println("1) Cliente");
@@ -15,7 +16,7 @@ public class UdemBank{
     int tipo_usuario = input.nextInt();
     inicio_sesion(tipo_usuario);
   }
-
+//Metodo controlador;
   public void inicio_sesion(int tipo_usuario){
     if(tipo_usuario == 1){
       System.out.println("Bienvenido por favor digita tu id: ");
@@ -45,13 +46,15 @@ public class UdemBank{
       String password_admin = input.nextLine();
       if(check.verificacion_id_admin(id_admin) && check.verificacion_password_admin(password_admin)){
         System.out.println("Elija una opción");
-        System.out.println("(1) Crear un ATM");
-        System.out.println("(2) Agregar un cliente");
-        System.out.println("(3) Modificar cliente");
-        System.out.println("(4) Eliminar cliente");
+        System.out.println("(1) Agregar un cliente");
+        System.out.println("(2) Modificar cliente");
+        System.out.println("(3) Eliminar cliente");
         System.out.println("Ingrese su respuesta: ");
         int respuesta = input.nextInt();
         actions.transacciones_admin(respuesta);
+      }else{
+        System.out.println("Administrador no registrado. ");
+        
       }
       
     }

@@ -5,6 +5,7 @@ public class Verificacion{
   Administrador admin = new Administrador(3456712, "Julio Cortes", "password");
   Administrador[] admins = {admin};
   
+  //Verificaciones del cliente;
   public Boolean verificacion_id(int id){
       admin.leer_archivo("Clientes.txt");
       for (Cliente i : admin.clientes) {
@@ -23,6 +24,8 @@ public class Verificacion{
       }
       return false;
   }
+
+  //Verificaciones del administrador;
   public Boolean verificacion_id_admin(int id){
       for (Administrador i : admins) {
         if (i.getId() == id) {
@@ -39,15 +42,8 @@ public class Verificacion{
       }
       return false;
   }
-  public Boolean verificacion_id_atm(int id_atm){
-      for (ATM i : admin.atm_list) {
-        if (i.getId() == id_atm) {
-          return true;
-        }
-      }
-      return false;
-  }
 
+  //Metodos para obtener los objetos segun el id;
   public Cliente obtenerCliente(int id) {
     for (Cliente cliente : admin.clientes) {
       if (cliente.getId() == id) {
